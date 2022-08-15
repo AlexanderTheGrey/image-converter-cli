@@ -11,10 +11,10 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": ["node"],
-    "sourceMap": true,
+    "sourceMap": false,
     "inlineSourceMap": false,
-    "inlineSources": true,
-    "declaration": false,
+    "inlineSources": false,
+    "declaration": true,
     "noEmit": false
   },
   "include": [

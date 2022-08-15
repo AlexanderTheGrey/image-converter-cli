@@ -21,7 +21,10 @@ yarn-error.log*
 *.sw?
 
 # Image Converter build files
-*.js*
+/src/**/*.js
+/src/**/*.d.ts
+/spec/**/*.js
+/spec/**/*.d.ts
 
 # Image Converter temp files
 /src/.*

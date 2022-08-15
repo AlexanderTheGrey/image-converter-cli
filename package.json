@@ -2,15 +2,17 @@
   "name": "cli-image-converter",
   "version": "0.1.0",
   "private": true,
+  "bin": "bin/cli.js",
+  "main": "lib/image-converter.js",
   "scripts": {
-    "build": "npx eslint . && npx tsc --build",
+    "build": "npx eslint . && npx tsc --build && rm -rf ./lib/ && mkdir -p ./lib/ && mv -- ./src/image-converter.js ./lib/ && mv -- ./src/image-converter.d.ts ./lib/",
     "lint": "npx eslint .",
     "test:prod": "jasmine --config=./spec/support/jasmine-prod.json",
     "test:dev": "env NODE_OPTIONS=--loader=ts-node/esm jasmine --config=./spec/support/jasmine-dev.json",
     "converter:prod": "node src/tools/converter/image-converter.mjs",
     "converter:dev": "npx ts-node-esm src/tools/converter/image-converter.mts",
     "pretty-quick": "npx pretty-quick --staged",
-    "postinstall": "npx tsc --build"
+    "postinstall": "npx tsc --build && rm -rf ./lib/ && mkdir -p ./lib/ && mv -- ./src/image-converter.js ./lib/ && mv -- ./src/image-converter.d.ts ./lib/"
   },
   "devDependencies": {
     "@types/jasmine": "^4.0.3",

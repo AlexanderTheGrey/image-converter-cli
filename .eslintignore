@@ -94,3 +94,5 @@ sw.*
 
 # Build files
 *.js
+*.js.*
+*.d.ts
