@@ -14,7 +14,7 @@ import {
   converted_source_image_files_path,
   converted_target_image_files_path,
   error_path,
-} from "../../src/image-converter.js";
+} from "../../lib/image-converter.js";
 
 const MAX_SAFE_TIMEOUT = Math.pow(2, 31) - 1;
 
