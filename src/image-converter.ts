@@ -1,17 +1,12 @@
-import { argv } from "process";
 import { Command } from "commander";
 import path from "path";
 import fsp from "fs/promises";
 import os from "os";
-import { pathToFileURL } from "url";
 import { globby } from "globby";
 import sharp from "sharp";
 import bmp from "@vingle/bmp-js";
 
-const nodePath = pathToFileURL(argv[1]).href;
-const modulePath = import.meta.url;
-
-const __dirname = "src";
+const __dirname = "lib";
 
 const conversion_boolean_path = path.join(__dirname, ".conversion");
 const code_search_files_path = path.join(__dirname, ".code_search_files");
@@ -406,11 +401,6 @@ class ImageConverter {
     }
     return false;
   }
-}
-
-if (nodePath === modulePath) {
-  const imageConverter = new ImageConverter(argv);
-  await imageConverter.runProgram();
 }
 
 export {

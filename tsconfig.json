@@ -19,6 +19,7 @@
   },
   "include": [
     "./src/image-converter.ts",
+    "./bin/cli.ts",
     "./spec/converter/image-converter.spec.ts",
     "./spec/helpers/reporter.ts"
   ]
