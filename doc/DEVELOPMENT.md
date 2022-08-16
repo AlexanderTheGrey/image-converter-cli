@@ -1,13 +1,7 @@
-## Run development build
-
-```
-npm run converter:dev -- -i '<glob to search image files>' -c '<glob to search code files>' <options...>
-```
-
 ## Build for production
 
 ```
-npm run build-ts
+npm run build
 ```
 
 ## Run production build
@@ -16,22 +10,28 @@ npm run build-ts
 npm run converter:prod -- -i '<glob to search image files>' -c '<glob to search code files>' <options...>
 ```
 
-## Run development tests
+## Run development build
 
 ```
-npm run test-ts:dev
+npm run converter:dev -- -i '<glob to search image files>' -c '<glob to search code files>' <options...>
 ```
 
 ## Run production tests
 
 ```
-npm run test-ts:prod
+npm run test:prod
+```
+
+## Run development tests
+
+```
+npm run test:dev
 ```
 
 ## Run lint
 
 ```
-npm run lint-ts
+npm run lint
 ```
 
 ## Example run
@@ -39,5 +39,3 @@ npm run lint-ts
 ```
 npm run converter:dev -- -i './public/**/*.(jpeg|jpg|png|gif|tiff|tif|bmp|webp)' -c './public/**/*.(vue|html)'
 ```
-
-#### Note: Glob options must be single quoted to avoid interpretation by the shell

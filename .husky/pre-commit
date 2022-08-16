@@ -1,6 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 npx pretty-quick --staged
+if git diff --name-status --staged --diff-filter=AMR | grep -q 'package.json'; then
+    projectVersion=$(npm pkg get version | tr -d '"')
+    sed -i.bak -E "s/(\.version\(\")([0-9]\.[0-9]\.[0-9])(\"\, \"\-v\, \-\-version\"\))/\1$projectVersion\3/g" ./src/image-converter.ts
+    git add ./package.json
+fi
 npm run build
 git add ./lib/
 git update-index
