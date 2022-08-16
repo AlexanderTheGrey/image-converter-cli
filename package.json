@@ -2,6 +2,7 @@
   "name": "image-converter-cli",
   "version": "0.1.0",
   "author": "Alexander Allen",
+  "homepage": "https://code.il2.dso.mil/platform-one/products/bullhorn/sites/image-converter-cli.git",
   "license": "Apache-2.0",
   "description": "Automatically convert images to a web-optimized format",
   "keywords": [
@@ -27,6 +28,14 @@
   },
   "main": "lib/image-converter.js",
   "typings": "./lib/image-converter.d.ts",
+  "directories": {
+    "doc": "doc",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://code.il2.dso.mil/platform-one/products/bullhorn/sites/image-converter-cli.git"
+  },
   "type": "module",
   "scripts": {
     "build": "npx eslint . && npx tsc --build && rm -rf ./lib/ && mkdir -p ./lib/ && mv -- ./src/image-converter.js ./lib/ && mv -- ./src/image-converter.d.ts ./lib/ && rm -f ./spec/**/*.d.ts",
