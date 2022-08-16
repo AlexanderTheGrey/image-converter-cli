@@ -2,12 +2,11 @@ src
 bin/cli.ts
 bin/cli.d.ts
 spec
-.git
 .husky
-node_modules
 package-lock.json
 tsconfig.json
 .gitignore
 .prettierignore
 .eslintignore
 .eslintrc
+.image-converter-temp

@@ -1,6 +1,6 @@
 # Image Converter CLI
 
-A pre-commit hook tool for easily converting images to WebP.
+A command-line based image converter used to convert JPEG, PNG, GIF, TIFF, and BMP images to the web-optimized WebP format. It's primarily designed for use in pre-commit hooks.
 
 ## Exmaple run
 

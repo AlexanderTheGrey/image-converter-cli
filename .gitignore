@@ -27,7 +27,7 @@ yarn-error.log*
 /spec/**/*.d.ts
 
 # Image Converter temp files
-/src/.*
+.image-converter-temp
 
 # Backup files
 *.bak

@@ -1,13 +1,13 @@
 import { Command } from "commander";
 import path from "path";
 import fsp from "fs/promises";
+import { Stats } from "fs";
 import os from "os";
 import { globby } from "globby";
 import sharp from "sharp";
 import bmp from "@vingle/bmp-js";
 
-const tempDir = ".temp";
-await fsp.mkdir(tempDir);
+const tempDir = ".image-converter-temp";
 
 const conversion_boolean_path = path.join(tempDir, ".conversion");
 const code_search_files_path = path.join(tempDir, ".code_search_files");
@@ -37,6 +37,17 @@ const heImageExtensions = [
 ];
 
 try {
+  const tempStats = await fsp.stat(tempDir).catch(() => false);
+  const tempExists = tempStats instanceof Stats;
+  let tempDirExists = false;
+
+  if (tempExists) {
+    tempDirExists = tempStats.isDirectory();
+  }
+  if (!tempDirExists) {
+    await fsp.mkdir(tempDir);
+  }
+
   if ((await fsp.stat(conversion_boolean_path).catch(() => false)) !== false) {
     await fsp.unlink(conversion_boolean_path);
   }
