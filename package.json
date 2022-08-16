@@ -2,7 +2,7 @@
   "name": "image-converter-cli",
   "version": "0.1.0",
   "author": "Alexander Allen",
-  "homepage": "https://code.il2.dso.mil/platform-one/products/bullhorn/sites/image-converter-cli.git",
+  "homepage": "https://github.com/AlexanderTheGrey/image-converter-cli.git",
   "license": "Apache-2.0",
   "description": "Automatically convert images to a web-optimized format",
   "keywords": [
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://code.il2.dso.mil/platform-one/products/bullhorn/sites/image-converter-cli.git"
+    "url": "https://github.com/AlexanderTheGrey/image-converter-cli.git"
   },
   "type": "module",
   "scripts": {
