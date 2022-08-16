@@ -1,7 +1,6 @@
 import { Command } from "commander";
 import path from "path";
 import fsp from "fs/promises";
-import { Stats } from "fs";
 import os from "os";
 import { globby } from "globby";
 import sharp from "sharp";
@@ -37,14 +36,7 @@ const heImageExtensions = [
 ];
 
 try {
-  const tempStats = await fsp.stat(tempDir).catch(() => false);
-  const tempExists = tempStats instanceof Stats;
-  let tempDirExists = false;
-
-  if (tempExists) {
-    tempDirExists = tempStats.isDirectory();
-  }
-  if (!tempDirExists) {
+  if ((await fsp.stat(tempDir).catch(() => false)) === false) {
     await fsp.mkdir(tempDir);
   }
 

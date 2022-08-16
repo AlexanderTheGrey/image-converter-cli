@@ -1,7 +1,7 @@
 {
   "name": "image-converter-cli",
-  "author": "Alexander Allen",
   "version": "0.1.0",
+  "author": "Alexander Allen",
   "license": "Apache-2.0",
   "description": "Automatically convert images to a web-optimized format",
   "keywords": [
