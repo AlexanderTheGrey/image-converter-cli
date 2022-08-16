@@ -111,12 +111,7 @@ describe("Command line options", () => {
     "./spec/converter/images/dummy/**/*.(jpeg|jpg|jpe|jif|jfif|jfi|png|gif|tiff|tif|bmp|webp|heif|heifs|heic|heics|avci|avcs|avif|avifs)";
 
   it("should correctly set --image-glob to input string", () => {
-    const argv = [
-      "node",
-      "./src/tools/converter/image-converter.mjs",
-      "-i",
-      imageGlob,
-    ];
+    const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
     const imageConverter = new ImageConverter(argv);
 
@@ -128,7 +123,7 @@ describe("Command line options", () => {
 
     const argv = [
       "node",
-      "./src/tools/converter/image-converter.mjs",
+      "./lib/image-converter.js",
       "-i",
       imageGlob,
       "-c",
@@ -141,12 +136,7 @@ describe("Command line options", () => {
   });
 
   it("should correctly set --process-svg-files to default false", () => {
-    const argv = [
-      "node",
-      "./src/tools/converter/image-converter.mjs",
-      "-i",
-      imageGlob,
-    ];
+    const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
     const imageConverter = new ImageConverter(argv);
 
@@ -154,12 +144,7 @@ describe("Command line options", () => {
   });
 
   it("should correctly set --override-staged-files to default false", () => {
-    const argv = [
-      "node",
-      "./src/tools/converter/image-converter.mjs",
-      "-i",
-      imageGlob,
-    ];
+    const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
     const imageConverter = new ImageConverter(argv);
 
@@ -167,12 +152,7 @@ describe("Command line options", () => {
   });
 
   it("should correctly set --override-excluded-files to default false", () => {
-    const argv = [
-      "node",
-      "./src/tools/converter/image-converter.mjs",
-      "-i",
-      imageGlob,
-    ];
+    const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
     const imageConverter = new ImageConverter(argv);
 
@@ -180,12 +160,7 @@ describe("Command line options", () => {
   });
 
   it("should correctly set --code-glob to default undefined", () => {
-    const argv = [
-      "node",
-      "./src/tools/converter/image-converter.mjs",
-      "-i",
-      imageGlob,
-    ];
+    const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
     const imageConverter = new ImageConverter(argv);
 
@@ -195,7 +170,7 @@ describe("Command line options", () => {
   it("should correctly set --process-svg-files to true", () => {
     const argv = [
       "node",
-      "./src/tools/converter/image-converter.mjs",
+      "./lib/image-converter.js",
       "-i",
       imageGlob,
       "--process-svg-files",
@@ -209,7 +184,7 @@ describe("Command line options", () => {
   it("should correctly set --override-staged-files to true when provided as an option", () => {
     const argv = [
       "node",
-      "./src/tools/converter/image-converter.mjs",
+      "./lib/image-converter.js",
       "-i",
       imageGlob,
       "--override-staged-files",
@@ -223,7 +198,7 @@ describe("Command line options", () => {
   it("should correctly set --override-excluded-files to true when provided as an option", () => {
     const argv = [
       "node",
-      "./src/tools/converter/image-converter.mjs",
+      "./lib/image-converter.js",
       "-i",
       imageGlob,
       "--override-excluded-files",
@@ -244,12 +219,7 @@ describe("Expected input files", () => {
     async () => {
       let errorMessage = "";
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       try {
         await fsp.unlink(exclusions_path);
@@ -281,12 +251,7 @@ describe("Expected input files", () => {
     async () => {
       let errorMessage = "";
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       try {
         await fsp.unlink(staged_files_path);
@@ -327,12 +292,7 @@ describe("Expected input files", () => {
         someNonImages.join(os.EOL) + os.EOL
       );
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlobError,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlobError];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -366,12 +326,7 @@ describe("Expected input files", () => {
         someNonImages.join(os.EOL) + os.EOL
       );
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlobError,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlobError];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -395,7 +350,7 @@ describe("Expected input files", () => {
     async () => {
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-excluded-files",
@@ -419,7 +374,7 @@ describe("Expected input files", () => {
     async () => {
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-staged-files",
@@ -443,7 +398,7 @@ describe("Expected input files", () => {
     async () => {
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-excluded-files",
@@ -476,12 +431,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, jpegImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -511,12 +461,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, pngImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -546,12 +491,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, gifImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -582,12 +522,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, bmpImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -617,12 +552,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, tiffImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -654,7 +584,7 @@ describe("Converting images", () => {
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--process-svg-files",
@@ -690,7 +620,7 @@ describe("Converting images", () => {
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--create-fallback-image",
@@ -724,12 +654,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, webpImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -757,7 +682,7 @@ describe("Converting images", () => {
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--create-fallback-image",
@@ -796,12 +721,7 @@ describe("Converting images", () => {
         animatedWebpImages.join(os.EOL) + os.EOL
       );
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -826,7 +746,7 @@ describe("Converting images", () => {
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--create-fallback-image",
@@ -861,12 +781,7 @@ describe("Converting images", () => {
 
       await fsp.writeFile(staged_files_path, heImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -891,12 +806,7 @@ describe("Converting images with JPEG, PNG, GIF, BMP, TIFF, or SVG and WebP file
 
       await fsp.writeFile(staged_files_path, allImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -921,12 +831,7 @@ describe("Converting images with JPEG, PNG, GIF, BMP, TIFF, or SVG and HEIF file
 
       await fsp.writeFile(staged_files_path, allImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -951,12 +856,7 @@ describe("Converting images with JPEG, PNG, GIF, BMP, TIFF, or SVG and WebP and 
 
       await fsp.writeFile(staged_files_path, allImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -980,12 +880,7 @@ describe("Converting SVG images to WebP", () => {
 
       await fsp.writeFile(staged_files_path, allImages.join(os.EOL) + os.EOL);
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -1011,7 +906,7 @@ describe("Converting SVG images to WebP", () => {
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--process-svg-files",
@@ -1049,7 +944,7 @@ describe("Converting images with excluded files, staged files override, and non-
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-staged-files",
@@ -1105,7 +1000,7 @@ describe("Converting images with excluded files, staged files override, and exis
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-staged-files",
@@ -1158,7 +1053,7 @@ describe("Converting images with staged files with empty excluded files file, se
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--create-fallback-image",
@@ -1215,7 +1110,7 @@ describe("Converting images with staged files with excluded files override and n
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-excluded-files",
@@ -1261,12 +1156,7 @@ describe("Converting images with empty staged files file and empty excluded file
     async () => {
       const imageGlob = "./spec/converter/images/**/*";
 
-      const argv = [
-        "node",
-        "./src/tools/converter/image-converter.mjs",
-        "-i",
-        imageGlob,
-      ];
+      const argv = ["node", "./lib/image-converter.js", "-i", imageGlob];
 
       const imageConverter = new ImageConverter(argv);
       await imageConverter.runProgram();
@@ -1302,7 +1192,7 @@ describe("Converting images with staged files with excluded files override and p
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-excluded-files",
@@ -1363,7 +1253,7 @@ describe("Converting images with staged files override and populated staged file
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-excluded-files",
@@ -1426,7 +1316,7 @@ describe("Converting images with staged files override and non-existing staged f
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--override-excluded-files",
@@ -1490,7 +1380,7 @@ describe("Converting images with staged files and excluded files, set --create-f
 
       const argv = [
         "node",
-        "./src/tools/converter/image-converter.mjs",
+        "./lib/image-converter.js",
         "-i",
         imageGlob,
         "--create-fallback-image",
