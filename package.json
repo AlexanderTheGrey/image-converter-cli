@@ -45,7 +45,8 @@
     "converter:prod": "node bin/cli.js",
     "converter:dev": "npx ts-node-esm bin/cli.ts",
     "pretty-quick": "npx pretty-quick --staged",
-    "prepare": "npx tsc --build && rm -rf ./lib/ && mkdir -p ./lib/ && mv -- ./src/image-converter.js ./lib/ && mv -- ./src/image-converter.d.ts ./lib/ && rm -f ./spec/**/*.d.ts && if [ -z \"$(git remote | grep 'github')\" ]; then git remote add github git@github.com:AlexanderTheGrey/image-converter-cli.git; fi"
+    "prepare": "npx tsc --build && rm -rf ./lib/ && mkdir -p ./lib/ && mv -- ./src/image-converter.js ./lib/ && mv -- ./src/image-converter.d.ts ./lib/ && rm -f ./spec/**/*.d.ts && if [ -z \"$(git remote | grep 'github')\" ]; then git remote add github git@github.com:AlexanderTheGrey/image-converter-cli.git; fi",
+    "mirror": "GIT_SSH_COMMAND='ssh -i ~/.ssh/id_ed25519_p1_deploy_key' git push --mirror github"
   },
   "dependencies": {
     "@vingle/bmp-js": "^0.2.5",
