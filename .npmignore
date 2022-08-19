@@ -2,6 +2,7 @@ src
 bin/cli.ts
 bin/cli.d.ts
 spec
+doc
 .husky
 package-lock.json
 tsconfig.json
