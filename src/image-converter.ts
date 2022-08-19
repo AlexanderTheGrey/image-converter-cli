@@ -88,7 +88,7 @@ class ImageConverter {
     const program = new Command();
 
     program
-      .version("0.1.1", "-v, --version")
+      .version("0.1.2", "-v, --version")
       .usage("[OPTIONS]...")
       .requiredOption("-i, --image-glob <value>", "glob to search image files")
       .option("-c, --code-glob <value>", "glob to search code files")
