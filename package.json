@@ -2,7 +2,7 @@
   "name": "image-converter-cli",
   "version": "0.1.1",
   "author": "Alexander Allen",
-  "homepage": "https://github.com/AlexanderTheGrey/image-converter-cli.git",
+  "homepage": "https://github.com/AlexanderTheGrey/image-converter-cli#readme",
   "license": "Apache-2.0",
   "description": "Automatically convert images to a web-optimized format",
   "keywords": [

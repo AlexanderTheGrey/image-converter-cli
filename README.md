@@ -1,6 +1,6 @@
 # Image Converter CLI
 
-A command-line based image converter used to convert JPEG, PNG, GIF, TIFF, BMP, and SVG images to the web-optimized WebP format. It's primarily designed for use in pre-commit hooks.
+A TypeScript command-line based image converter used to convert JPEG, PNG, GIF, TIFF, BMP, and SVG images to the web-optimized WebP format. It's primarily designed for use in pre-commit hooks.
 
 ## CLI Options
 
@@ -18,25 +18,25 @@ Glob to search code files.
 
 ### `--process-svg-files`
 
-Process SVG files (default: false).
+Process SVG files.
 
 ### `--override-staged-files`
 
-Don't exclude unstaged files (default: false).
+Don't exclude unstaged files.
 
 ### `--override-excluded-files`
 
-Don't exclude files from exclusions list (default: false).
+Don't exclude files from exclusions list.
 
 ### `--create-fallback-image`
 
-Create a PNG/GIF file if a JPEG, PNG, GIF, TIFF, or BMP file doesn't exist (default: false).
+Create a PNG/GIF file if a JPEG, PNG, GIF, TIFF, or BMP file doesn't exist.
 
 ### `-h, --help`
 
 Display help for command.
 
-## Exmaple run
+## Example run
 
 ```
 image-converter -i './{src,public}/**/*.(jpeg|jpg|jpe|jif|jfif|jfi|png|gif|tiff|tif|bmp|webp|heif|heifs|heic|heics|avci|avcs|avif|avifs)' -c './{src,public}/**/*.(js|vue|html)'

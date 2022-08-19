@@ -34,6 +34,22 @@ npm run test:dev
 npm run lint
 ```
 
+## Mirror to GitHub
+
+```
+npm run mirror
+```
+
+(GitHub deploy key required)
+
+## Publish new version to npm
+
+```
+npm publish
+```
+
+(npm publish access token required)
+
 ## Example run
 
 ```

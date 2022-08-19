@@ -1,11 +1,30 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
+reject_commit=0
+bold=$(tput bold)
+blue=$(tput setaf 4)
+yellow=$(tput setaf 3)
+normal=$(tput sgr0)
 npx pretty-quick --staged
 if git diff --name-status --staged --diff-filter=AMR | grep -q 'package.json'; then
-    projectVersion=$(npm pkg get version | tr -d '"')
-    sed -i.bak -E "s/(\.version\(\")([0-9]\.[0-9]\.[0-9])(\"\, \"\-v\, \-\-version\"\))/\1$projectVersion\3/g" ./src/image-converter.ts
-    git add ./package.json
+    packageProjectVersion=$(npm pkg get version | tr -d '"')
+    commanderProjectVersion=$(grep '\.version("[0-9]\.[0-9]\.[0-9]", "-v, --version")' ./src/image-converter.ts | grep -o '[0-9]\.[0-9]\.[0-9]')
+    if [ "$packageProjectVersion" != "$commanderProjectVersion" ]; then
+        sed -i.bak -E "s/(\.version\(\")([0-9]\.[0-9]\.[0-9])(\"\, \"\-v\, \-\-version\"\))/\1$packageProjectVersion\3/g" ./src/image-converter.ts
+        git add ./src/image-converter.ts
+        printf "%s\n" "${bold}${blue}Package version updated.${normal}"
+        reject_commit=1
+    fi
 fi
+libBefore=$(sha256sum ./lib/*)
 npm run build
-git add ./lib/
-git update-index
+libAfter=$(sha256sum ./lib/*)
+if [ "$libBefore" != "$libAfter" ]; then
+   git add ./lib/
+   printf "%s\n" "${bold}${blue}Production library updated.${normal}"
+   reject_commit=1
+fi
+if [ $reject_commit -eq 1 ]; then
+    printf "%s\n" "${bold}${yellow}Files have been updated. Verify relevant files are staged and re-commit.${normal}"
+    exit 1
+fi
