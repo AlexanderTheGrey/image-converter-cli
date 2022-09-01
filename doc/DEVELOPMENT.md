@@ -34,13 +34,21 @@ npm run test:dev
 npm run lint
 ```
 
-## Mirror to GitHub
+## Mirror push to GitLab
 
 ```
-npm run mirror
+npm run mirror-push
 ```
 
-(GitHub deploy key required)
+(GitLab token required)
+
+## Mirror pull from GitLab
+
+```
+npm run mirror-pull
+```
+
+(GitLab token required)
 
 ## Publish new version to npm
 
